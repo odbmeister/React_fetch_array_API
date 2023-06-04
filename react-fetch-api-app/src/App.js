@@ -46,7 +46,7 @@ function App() {
               <li key={index}>{feature}</li>
             ))}
           </ul>
-          <p>Terms and Conditions: {review.terms_and_conditions}</p>
+          <p dangerouslySetInnerHTML={{ __html: review.terms_and_conditions }}></p>
           <a href={review.play_url}>PLAY NOW</a>
         </div>
       ))}
