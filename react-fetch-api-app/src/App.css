@@ -1,38 +1,145 @@
 .App {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
   text-align: center;
+  margin-bottom: 30px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.reviews-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.review {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center; 
 }
 
-.App-link {
-  color: #61dafb;
+.logo-rating-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+}
+
+.star {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: gold;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.features {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+.features li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.checkmark {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #00cc00;
+  border-radius: 50%;
+  background-color: #00cc00;
+  margin-right: 10px;
+}
+
+.play-now {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  margin-top: 15px;
+}
+
+.play-now:hover {
+  background-color: #0056b3;
+}
+
+.load-more {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.load-more:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.load-more:hover {
+  background-color: #0056b3;
+}
+
+.message {
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+}
+
+@media (max-width: 600px) {
+  .reviews-container {
+    grid-template-columns: 1fr;
   }
-  to {
-    transform: rotate(360deg);
+
+  .review {
+    padding: 15px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .logo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+
+  .play-now,
+  .load-more {
+    width: 100%;
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: #007bff;
   }
 }

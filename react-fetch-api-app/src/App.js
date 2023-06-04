@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './App.css';
 
 function App() {
   const [reviews, setReviews] = useState([]);
@@ -36,26 +37,37 @@ function App() {
   return (
     <div className="App">
       <h1>Reviews</h1>
-      {filteredData.map((review) => (
-        <div key={review.brand_id}>
-          <img src={review.logo} alt="Logo" />
-          <h2>{review.brand_id}</h2>
-          <p>Rating: {review.info.rating}</p>
-          <ul>
-            {review.info.features.map((feature, index) => (
-              <li key={index}>{feature}</li>
-            ))}
-          </ul>
-          <p dangerouslySetInnerHTML={{ __html: review.terms_and_conditions }}></p>
-          <a href={review.play_url}>PLAY NOW</a>
-        </div>
-      ))}
+      <div className="reviews-container">
+        {filteredData.map((review) => (
+          <div className="review" key={review.brand_id}>
+            <div className="logo-rating-container">
+              <img className="logo" src={review.logo} alt="Logo" />
+              <div className="rating">
+                {Array.from({ length: review.info.rating }, (_, index) => (
+                  <span key={index} className="star"></span>
+                ))}
+              </div>
+            </div>
+            <ul className="features">
+              {review.info.features.map((feature, index) => (
+                <li key={index}>
+                  <span className="checkmark"></span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <p dangerouslySetInnerHTML={{ __html: review.terms_and_conditions }}></p>
+            <a className="play-now" href={review.play_url}>PLAY NOW</a>
+          </div>
+        ))}
+      </div>
       {reviews.length === 0 && <p>No reviews found.</p>}
       {reviews.length > 0 && (
-        <button onClick={loadMore} disabled={initialReviewCount >= reviews.length}>
-        Load More
-      </button>
-      )}  
+        <button className="load-more" onClick={loadMore} disabled={initialReviewCount >= reviews.length}>
+          Load More
+        </button>
+      )}
+      {initialReviewCount >= reviews.length && <p className="message">All brands have been loaded.</p>}
     </div>
   );
 }
