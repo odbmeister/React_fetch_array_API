@@ -24,7 +24,7 @@ function App() {
   // Fetching the data from the server/API and sorting it by the correct order
   const fetchReviewsData = async () => {
     try {
-      const response = await fetch('http://localhost:3000/data');
+      const response = await fetch('http://localhost:3001/data');
       const data = await response.json();
       const sortedData = data.sort((a, b) => {
         if (a.brand_id < b.brand_id) return -1;
