@@ -12,8 +12,10 @@ app.use(express.static(path.join(__dirname, 'react-fetch-api-app/build')));
 app.get('/data', (req, res) => {
   // Handle API request logic here
   // Example: Return mock data
-  const data = { message: 'Hello from the API!' };
-  res.json(data);
+  const reviews = require('./data.json');
+  const filteredReviews = reviews.toplists['575'];
+  
+  res.json(filteredReviews);
 });
 
 // All other routes should serve the React app
