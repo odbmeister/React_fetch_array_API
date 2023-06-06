@@ -1,0 +1,14 @@
+version: 2
+frontend:
+  commands:
+    - name: Install frontend dependencies
+      command: cd react-fetch-api-app && npm install
+    - name: Start frontend
+      command: cd react-fetch-api-app && npm start
+services:
+  - name: web
+    port: 3001
+    command: node server.js
+    envs:
+      - name: PORT
+        value: "3001"
